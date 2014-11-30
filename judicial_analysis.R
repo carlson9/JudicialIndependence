@@ -181,11 +181,9 @@ for(k in 1:3){
 coef <- unlist(judicial.mods[[31]]$BUGSoutput$mean)
 se <- unlist(judicial.mods[[31]]$BUGSoutput$sd)
 null.table <- round(cbind(coef, se,
-            coef/se, 
-            1-pt(abs(coef/se),judicial.mods[[31]]$BUGSoutput$pD),
             coef-1.96*se,
             coef+1.96*se),6)[-(1:44), ]
-colnames(null.table) <- c('mean', 'se', 't value', 'Pr(>|t|)', '2.5%', '97.5%')
+colnames(null.table) <- c('mean', 'se', '2.5%', '97.5%')
 rownames(null.table) <- c('system', 'polity', 'years',
                                        'deviance', 'g.0', 'Colonial_Spain', 'Colonial_UK', 'Colonial_Portugal',
                                        'Colonial_France', 'sigma.a', 'sigma.y')
