@@ -245,7 +245,32 @@ gelman.plot(as.mcmc(jm3), ask=FALSE)
 dev.off()
 
 
+##Model 1 coef plot
+pdf('mod1_coefplot.pdf')
+par(mar=c(4,8,2,2), family='Times')
+mod1.coef <- out.table[[1]][-c(1:44, 49), c(1,5,6)]
+plot(mod1.coef[,1], 1:dim(mod1.coef)[1], pch=18, xlab='estimates', ylab='', yaxt='n', xlim=c(min(mod1.coef[,2])-.3, max(mod1.coef[,3])+.3))
+axis(2, at=1:dim(mod1.coef)[1], labels=rownames(mod1.coef), las=2, cex=.6)
+segments(mod1.coef[,2], 1:dim(mod1.coef)[1], mod1.coef[,3], 1:dim(mod1.coef)[1])
+abline(v=0, lty=2)
+dev.off()
 
+pdf('mod2_coefplot.pdf')
+par(mar=c(4,8,2,2), family='Times')
+mod2.coef <- out.table[[2]][-c(1:44, 49), c(1,5,6)]
+plot(mod2.coef[,1], 1:dim(mod2.coef)[1], pch=18, xlab='estimates', ylab='', yaxt='n', xlim=c(min(mod2.coef[,2])-.3, max(mod2.coef[,3])+.3))
+axis(2, at=1:dim(mod2.coef)[1], labels=rownames(mod2.coef), las=2, cex=.6)
+segments(mod2.coef[,2], 1:dim(mod2.coef)[1], mod2.coef[,3], 1:dim(mod2.coef)[1])
+abline(v=0, lty=2)
+dev.off()
 
+pdf('mod3_coefplot.pdf')
+par(mar=c(4,8,2,2), family='Times')
+mod3.coef <- out.table[[3]][-c(1:44, 49), c(1,5,6)]
+plot(mod3.coef[,1], 1:dim(mod3.coef)[1], pch=18, xlab='estimates', ylab='', yaxt='n', xlim=c(min(mod3.coef[,2])-.3, max(mod3.coef[,3])+.3))
+axis(2, at=1:dim(mod3.coef)[1], labels=rownames(mod3.coef), las=2, cex=.6)
+segments(mod3.coef[,2], 1:dim(mod3.coef)[1], mod3.coef[,3], 1:dim(mod3.coef)[1])
+abline(v=0, lty=2)
+dev.off()
 
 
