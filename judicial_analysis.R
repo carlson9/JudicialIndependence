@@ -18,11 +18,11 @@ m <- 10
 #}
 
 
-#data.impute <- list()
-#for(i in 1:m){
-#  dat_url <- getURL(paste0('https://raw.githubusercontent.com/carlson9/MLM/master/Data', i))
-#  data.impute[[i]] <- read.table(text = dat_url, row.names=NULL)
-#}
+data.impute <- list()
+for(i in 1:m){
+  dat_url <- getURL(paste0('https://raw.githubusercontent.com/carlson9/MLM/master/Data', i))
+  data.impute[[i]] <- read.table(text = dat_url, row.names=NULL)
+}
 
 
 judicial <- 'model {
