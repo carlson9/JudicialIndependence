@@ -1,9 +1,9 @@
 rm(list=ls())
 lapply(c('RCurl', 'superdiag', 'mice', 'R2jags', 'xtable', 'boot'), library, character.only=TRUE)
 
-#setwd('/home/david/MLM/')
+#setwd('~/JudicialIndependence/')
 
-dat_url <- getURL('https://raw.githubusercontent.com/carlson9/MLM/master/judicial_data.txt')
+dat_url <- getURL('https://raw.githubusercontent.com/carlson9/JudicialIndependence/master/judicial_data.txt')
 data <- read.table(text = dat_url, row.names=NULL)
 data <- data[,c('country', 'year', 'LJI', 'system', 'colonial', 'polity', 'years', 'frac', 'contest', 'vol')]
 drop <- apply(data, 1, function(x) all(is.na(x)))
@@ -14,13 +14,13 @@ data <- data[!drop,]
 m <- 10
 #data.impute <- mice(data, m)
 #for(i in 1:m){
-#  write.table(complete(data.impute, i), file=paste0('/home/david/MLM/Data', i))
+#  write.table(complete(data.impute, i), file=paste0('/home/david/JudicialIndependence/Data', i))
 #}
 
 
 data.impute <- list()
 for(i in 1:m){
-  dat_url <- getURL(paste0('https://raw.githubusercontent.com/carlson9/MLM/master/Data', i))
+  dat_url <- getURL(paste0('https://raw.githubusercontent.com/carlson9/JudicialIndependence/master/Data', i))
   data.impute[[i]] <- read.table(text = dat_url, row.names=NULL)
 }
 
