@@ -271,4 +271,56 @@ segments(mod3.coef[,2], 1:dim(mod3.coef)[1], mod3.coef[,3], 1:dim(mod3.coef)[1])
 abline(v=0, lty=2)
 dev.off()
 
+##Model 1 coef plot
+#fraction, system, polity, years, Spain, UK, Portugal, France, sigma.a, sigma.y
 
+coefs <- c(.32, .11,.17,.01,-1.42,-1.15,-1.59,-1.49,.92,.28)
+lower <- c(.07,-0,.13,.01,-2.12,-1.89,-2.73,-3.35,.7,.27)
+upper <- c(.56,.22,.2,.01,-.72,-.42,-.45,.38,1.13,.29)
+
+pdf('mod1_coefplot.pdf')
+par(mar=c(4,6,2,2), family='Times')
+plot(coefs,10:1,pch=18,ylab='',xlab='',yaxt='n',xlim=c(-3.2,1.2),xaxt='n')
+abline(v=0,lty=2)
+axis(2, at=10:1, labels=c('Fraction', 'System', 'Polity', 'Years', 
+                          'Spain', 'UK', 'Portugal', 'France', expression(sigma~'a'), expression(sigma~'y')),
+     las=2,tick=FALSE, cex.axis=1.5)
+axis(1,at=-3:1,tick=FALSE,padj=1, cex.axis=1.5)
+segments(x0=lower,x1=upper,y0=10:1,y1=10:1)
+dev.off()
+
+##Model 2 coef plot
+#contest, system, polity, years, Spain, UK, Portugal, France, sigma.a, sigma.y
+
+coefs <- c(.27, .11,.15,.01,-1.35,-1.09,-1.52,-1.38,.88,.28)
+lower <- c(.07,-0,.11,.01,-2.03,-1.81,-2.63,-3.18,.67,.26)
+upper <- c(.47,.22,.19,.01,-.67,-.38,-.42,.42,1.1,.29)
+
+pdf('mod2_coefplot.pdf')
+par(mar=c(4,6,2,2), family='Times')
+plot(coefs,10:1,pch=18,ylab='',xlab='',yaxt='n',xlim=c(-3.2,1.2),xaxt='n')
+abline(v=0,lty=2)
+axis(2, at=10:1, labels=c('Contest', 'System', 'Polity', 'Years', 
+                          'Spain', 'UK', 'Portugal', 'France', expression(sigma~'a'), expression(sigma~'y')),
+     las=2, cex.axis=1.5,tick=FALSE)
+axis(1,at=-3:1,tick=FALSE,padj=1, cex.axis=1.5)
+segments(x0=lower,x1=upper,y0=10:1,y1=10:1)
+dev.off()
+
+##Model 3 coef plot
+#Volatility, system, polity, years, Spain, UK, Portugal, France, sigma.a, sigma.y
+
+coefs <- c(-0, .09,.15,.01,-1.39,-1.16,-1.61,-1.38,.9,.28)
+lower <- c(-.01,-0.03,.11,.01,-2.08,-1.88,-2.73,-3.21,.68,.26)
+upper <- c(0,.21,.2,.01,-.69,-.43,-.49,.44,1.11,.29)
+
+pdf('mod3_coefplot.pdf')
+par(mar=c(4,6,2,2), family='Times')
+plot(coefs,10:1,pch=18,ylab='',xlab='',yaxt='n',xlim=c(-3.2,1.2),xaxt='n')
+abline(v=0,lty=2)
+axis(2, at=10:1, labels=c('Volatility', 'System', 'Polity', 'Years', 
+                          'Spain', 'UK', 'Portugal', 'France', expression(sigma~'a'), expression(sigma~'y')),
+     las=2, cex.axis=1.5,tick=FALSE)
+axis(1,at=-3:1,tick=FALSE,padj=1,cex.axis=1.5)
+segments(x0=lower,x1=upper,y0=10:1,y1=10:1)
+dev.off()
