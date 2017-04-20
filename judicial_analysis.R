@@ -324,3 +324,33 @@ axis(2, at=10:1, labels=c('Volatility', 'System', 'Polity', 'Years',
 axis(1,at=-3:1,tick=FALSE,padj=1,cex.axis=1.5)
 segments(x0=lower,x1=upper,y0=10:1,y1=10:1)
 dev.off()
+
+
+#map
+pdf('map.pdf',width=6,height=4)
+#frac
+data.f <- data[!is.na(data$frac),]
+unique(data.f$country)
+#all countries
+map('world')
+map('world', region = unique(data.f$country), add = TRUE, col='grey80', fill=TRUE)
+map('world', region = 'USA', col='grey80', add=TRUE, fill=TRUE)
+
+#contest
+data.c <- data[!is.na(data$contest),]
+unique(data.c$country)
+map('world', region = unique(data.c$country), add = TRUE, col='grey50', fill=TRUE)
+
+#vol
+data.v <- data[!is.na(data$vol),]
+map('world', region = unique(data.v$country), add = TRUE, col='grey20', fill=TRUE)
+
+#Albania in v but not c
+
+legend('bottomright',legend=c('Fraction, Contest, and Volatility',
+                'Fraction and Contest',
+                'Fraction'), col=c('grey20',
+                                            'grey50',
+                                            'grey80'), pch=20,cex=.7,bg='white')
+
+dev.off()
